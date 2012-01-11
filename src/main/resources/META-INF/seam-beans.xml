@@ -49,8 +49,8 @@
         <s:modifies />
         <o:Facebook/>
         <s:ApplicationScoped />
-        <o:OAuthApplication apiKey="199504083442549"
-            apiSecret="4c2e6e31484857a7a031f4147f054570"
+        <o:OAuthApplication apiKey="265967083466262"
+            apiSecret="f00648e171e34e0282a1cb2a64bbf922"
             callback="http://foobarter-social.rhcloud.com/callback.jsf" />
     </o:FacebookServiceJackson>
 

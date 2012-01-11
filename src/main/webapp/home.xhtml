@@ -35,10 +35,20 @@
 			</h:panelGroup>
 		
 			<h:panelGroup rendered="#{identity.loggedIn}">
-				<h:commandButton action="#{identity.logout}" value="logout"/>
+			
+				<div>
+					<img src="#{identity.user.userProfile.profileImageUrl}"/> Hello, <h:outputText value="#{identity.user.userProfile.fullName}!"/> you are now connected via your <h:outputText value="#{identity.user.serviceName}"/> account.
+					
+					<h:commandButton action="#{identity.logout}" value="logout"/>
+				</div>
+			
+				<div>Tell us (your followers, #{identity.user.serviceName} overlords and the whole world) what you think!
+				</div>
 				
-				<h:inputText value="#{socialMessages.message}"/>
-				<h:commandButton action="#{socialMessages.post}" value="Send"/>
+				<div>
+					<h:inputText value="#{socialMessages.message}"/>
+					<h:commandButton action="#{socialMessages.post}" value="Send"/>
+				</div>
 				
 			</h:panelGroup>		
 		
