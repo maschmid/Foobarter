@@ -21,6 +21,7 @@ import java.io.Serializable;
 import java.util.Collection;
 
 import javax.enterprise.context.SessionScoped;
+import javax.enterprise.inject.Any;
 import javax.enterprise.inject.Instance;
 import javax.enterprise.inject.spi.BeanManager;
 import javax.faces.context.FacesContext;
@@ -61,6 +62,7 @@ public class OAuthAuthenticatorImpl extends BaseAuthenticator implements OAuthAu
     private static final long serialVersionUID = -5615811225606141834L;
 
     @Inject
+    @Any
     private Instance<OAuthService> oauthService;
     
     private String serviceName = null;
