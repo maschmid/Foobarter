@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                template="/WEB-INF/templates/default.xhtml">
+    <ui:define name="content">
+        <f:metadata>
+            <f:viewParam name="#{oauthAuthenticator.verifierParamName}" value="#{oauthAuthenticator.verifier}"
+                         required="true"
+                         requiredMessage="We didn't get the authorization from the OAuth provider. Please go back and Try Again !"/>
+            <f:event type="preRenderView" listener="#{oauthAuthenticator.connect()}"/>
+        </f:metadata>
+        <h:messages/>
+        <h1>Seam Social FooBarter Example</h1>
+
+        <p>Getting Authorization from TODO</p>
+        You're ready to use FooBarter
+        <h:link outcome="home">client</h:link>
+
+    </ui:define>
+</ui:composition>
