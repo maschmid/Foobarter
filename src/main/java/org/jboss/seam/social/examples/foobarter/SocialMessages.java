@@ -16,6 +16,7 @@ import org.jboss.seam.social.MultiServicesManager;
 import org.jboss.seam.social.examples.foobarter.authenticator.OAuthUser;
 import org.jboss.seam.social.examples.foobarter.model.IdentityObject;
 import org.jboss.seam.social.examples.foobarter.model.SocialMessage;
+import org.jboss.seam.social.twitter.TwitterService;
 
 @Model
 @LoggedIn
@@ -23,9 +24,9 @@ public class SocialMessages {
     
     @Inject
     EntityManager em;
-    
+
     @Inject
-    MultiServicesManager servicesManager;
+    TwitterService twitterService;
     
     @Inject
     Identity identity;
@@ -45,8 +46,7 @@ public class SocialMessages {
     }   
     
     public void post() {
-        HasStatus statusService = (HasStatus)servicesManager.getCurrentService();
-        statusService.updateStatus(message);
+        twitterService.updateStatus(message);
         
         SocialMessage sm = new SocialMessage();
         sm.setMessage(message);

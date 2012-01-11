@@ -113,19 +113,12 @@ public class OAuthAuthenticatorImpl extends BaseAuthenticator implements OAuthAu
             
             OAuthService unambiguousOAuthService = oauthService.get();
             
-            if (unambiguousOAuthService.isConnected()) {
-                setUser(new OAuthUser(unambiguousOAuthService.getType(), unambiguousOAuthService.getMyProfile()));
-                setStatus(AuthenticationStatus.SUCCESS);                
-            }
-            else {
-                
-                try {
-                    FacesContext.getCurrentInstance().getExternalContext().redirect(unambiguousOAuthService.getAuthorizationUrl());
-                    setStatus(AuthenticationStatus.DEFERRED);
-                } catch (IOException e) {
-                    log.error("Failed to redirect ", e);
-                    setStatus(AuthenticationStatus.FAILURE);
-                }
+            try {
+                FacesContext.getCurrentInstance().getExternalContext().redirect(unambiguousOAuthService.getAuthorizationUrl());
+                setStatus(AuthenticationStatus.DEFERRED);
+            } catch (IOException e) {
+                log.error("Failed to redirect ", e);
+                setStatus(AuthenticationStatus.FAILURE);            
             }
         }
         else {           
@@ -146,8 +139,13 @@ public class OAuthAuthenticatorImpl extends BaseAuthenticator implements OAuthAu
         if (serviceName != null) {
             return multiServicesManager.getCurrentService().getVerifierParamName();
         }
-        else {
-            throw new UnsupportedOperationException("verifier with unambiguous service not implemented yet");
+        else {            
+            if (!oauthService.isUnsatisfied() && !oauthService.isAmbiguous()) {
+                return oauthService.get().getVerifierParamName();
+            }
+            else {
+                throw new IllegalStateException("Service name not set and there is no unambiguous OAuthService available");
+            }
         }
     }
     
@@ -157,7 +155,12 @@ public class OAuthAuthenticatorImpl extends BaseAuthenticator implements OAuthAu
             return multiServicesManager.getCurrentSession().getVerifier();
         }
         else {
-            throw new UnsupportedOperationException("verifier with unambiguous service not implemented yet");
+            if (!oauthService.isUnsatisfied() && !oauthService.isAmbiguous()) {
+                return oauthService.get().getVerifier();
+            }
+            else {
+                throw new IllegalStateException("Service name not set and there is no unambiguous OAuthService available");
+            }
         }
     }
     
@@ -167,39 +170,54 @@ public class OAuthAuthenticatorImpl extends BaseAuthenticator implements OAuthAu
             multiServicesManager.getCurrentSession().setVerifier(verifier);
         }
         else {        
-            throw new UnsupportedOperationException("verifier with unambiguous service not implemented yet");
+            if (!oauthService.isUnsatisfied() && !oauthService.isAmbiguous()) {
+                oauthService.get().setVerifier(verifier);
+            }
+            else {
+                throw new IllegalStateException("Service name not set and there is no unambiguous OAuthService available");
+            }
         }
     }
 
     @Override
     public void connect() {
+        
+        OAuthService currentService;
+        OAuthSession currentSession;
+
         if (serviceName != null) {
-                       
             multiServicesManager.connectCurrentService();
            
-            OAuthService currentService = multiServicesManager.getCurrentService();
-            OAuthSession currentSession = multiServicesManager.getCurrentSession();
-            
-            OAuthUser user = new OAuthUser(currentService.getType(), currentSession.getUserProfile());
-                
-            if (isIdentityManaged()) {
-                // By default we set the status to FAILURE, if we manage to get to the end
-                // of this method we get rewarded with a SUCCESS
-                setStatus(AuthenticationStatus.FAILURE);
-                
-                if (identitySessionProducer.get().isConfigured()) {
-                    validateManagedUser(user);
-                }
-            }
-            
-            setUser(user);
-            setStatus(AuthenticationStatus.SUCCESS);
-            
-            beanManager.fireEvent(new DeferredAuthenticationEvent(true));
+            currentService = multiServicesManager.getCurrentService();
+            currentSession = multiServicesManager.getCurrentSession();
         }
         else {
-            throw new UnsupportedOperationException("verifier with unambiguous service not implemented yet");
+            if (!oauthService.isUnsatisfied() && !oauthService.isAmbiguous()) {
+                currentService = oauthService.get();
+                currentSession = currentService.getSession();
+            }
+            else {
+                throw new IllegalStateException("Service name not set and there is no unambiguous OAuthService available");
+            }
         }
+        
+            
+        OAuthUser user = new OAuthUser(currentService.getType(), currentSession.getUserProfile());
+                
+        if (isIdentityManaged()) {
+            // By default we set the status to FAILURE, if we manage to get to the end
+            // of this method we get rewarded with a SUCCESS
+            setStatus(AuthenticationStatus.FAILURE);
+                
+            if (identitySessionProducer.get().isConfigured()) {
+                validateManagedUser(user);
+            }
+        }
+            
+        setUser(user);
+        setStatus(AuthenticationStatus.SUCCESS);
+            
+        beanManager.fireEvent(new DeferredAuthenticationEvent(true));
     }
     
     protected void validateManagedUser(OAuthUser principal) {

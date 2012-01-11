@@ -37,6 +37,7 @@
 
     </o:TwitterServiceJackson>
 
+<!-- 
     <o:LinkedInServiceJackson>
         <s:modifies />
         <o:LinkedIn/>
@@ -55,5 +56,5 @@
             apiSecret="f00648e171e34e0282a1cb2a64bbf922"
             callback="http://foobarter-social.rhcloud.com/callback.jsf" />
     </o:FacebookServiceJackson>
-
+-->
 </beans>

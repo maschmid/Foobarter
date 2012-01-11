@@ -22,6 +22,7 @@ public class UserDataSync {
             io.setServiceName(oauthUser.getServiceName());
             io.setFullName(oauthUser.getUserProfile().getFullName());           
             io.setProfileImageUrl(oauthUser.getUserProfile().getProfileImageUrl());
+            io.setOauthId(oauthUser.getUserProfile().getId());
         }
     }
 }

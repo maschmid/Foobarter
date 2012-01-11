@@ -26,6 +26,7 @@ public class IdentityObject implements Serializable {
     @IdentityProperty(PropertyType.NAME) private String name;
     private IdentityObjectType type;
 
+    private String oauthId;
     private String fullName;
     private String profileImageUrl;
     private String serviceName;
@@ -71,6 +72,14 @@ public class IdentityObject implements Serializable {
 
     public String getServiceName() {
         return serviceName;
+    }
+
+    public void setOauthId(String oauthId) {
+        this.oauthId = oauthId;
+    }
+
+    public String getOauthId() {
+        return oauthId;
     }
 
 }

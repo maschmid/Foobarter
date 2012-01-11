@@ -52,4 +52,8 @@ public class OAuthUser implements User {
     public String getServiceName() {
         return serviceName;
     }
+    
+    public String getOauthId() {
+        return profile.getId(); 
+    }
 }
