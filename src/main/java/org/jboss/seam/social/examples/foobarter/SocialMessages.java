@@ -1,5 +1,6 @@
 package org.jboss.seam.social.examples.foobarter;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.enterprise.inject.Instance;
@@ -39,7 +40,7 @@ public class SocialMessages {
     }
 
     public List<SocialMessage> getMessages() {
-        return em.createQuery("from SocialMessage m").getResultList();
+        return em.createQuery("from SocialMessage m order by m.date desc").getResultList();
     }   
     
     public void post() {
@@ -49,6 +50,7 @@ public class SocialMessages {
         SocialMessage sm = new SocialMessage();
         sm.setMessage(message);
         sm.setUser(em.find( IdentityObject.class, identity.getUser().getId()));
+        sm.setDate(new Date());
         
         em.persist(sm);
     }

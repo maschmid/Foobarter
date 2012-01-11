@@ -1,5 +1,7 @@
 package org.jboss.seam.social.examples.foobarter.model;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -10,6 +12,7 @@ public class SocialMessage {
     private Long id;
     private String message;
     private IdentityObject user;
+    private Date date;
   
     @Id
     @GeneratedValue
@@ -37,4 +40,13 @@ public class SocialMessage {
     public String getMessage() {
         return message;
     }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
 }
