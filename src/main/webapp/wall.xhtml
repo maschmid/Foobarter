@@ -24,12 +24,13 @@
 		
 		<h3>Latest FooBars</h3>
 		
-		<ul>
+		<div class="messages">
 		<ui:repeat var="m" value="#{socialMessages.messages}">
-			<li>
-				<h:outputText value="#{m.message}"/>  <h:outputText value="#{m.user.fullName}"/> <img src="#{m.user.profileImageUrl}"/>
-			</li>
+			<div class="message">
+				<div class="messageHeader"><img src="#{m.user.profileImageUrl}"/> <h:outputText value="#{m.user.fullName}"/> via <h:outputText value="#{m.user.serviceName}"/></div>
+				<div classs="messageBody"><h:outputText value="#{m.message}"/></div>			
+			</div>
 		</ui:repeat>
-		</ul>
+		</div>
 	</ui:define>
 </ui:composition>

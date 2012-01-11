@@ -43,3 +43,7 @@ span.invalid {
     padding-left: 3px;
     color: red;
 }
+
+.message img {
+	float:left;	
+}
