@@ -13,6 +13,7 @@ import org.jboss.seam.security.annotations.LoggedIn;
 import org.jboss.seam.social.Current;
 import org.jboss.seam.social.HasStatus;
 import org.jboss.seam.social.MultiServicesManager;
+import org.jboss.seam.social.Twitter;
 import org.jboss.seam.social.examples.foobarter.authenticator.OAuthUser;
 import org.jboss.seam.social.examples.foobarter.model.IdentityObject;
 import org.jboss.seam.social.examples.foobarter.model.SocialMessage;
@@ -26,6 +27,7 @@ public class SocialMessages {
     EntityManager em;
 
     @Inject
+    @Twitter
     TwitterService twitterService;
     
     @Inject
