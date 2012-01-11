@@ -201,6 +201,8 @@ public class OAuthAuthenticatorImpl extends BaseAuthenticator implements OAuthAu
             if (!oauthService.isUnsatisfied() && !oauthService.isAmbiguous()) {
                 currentService = oauthService.get();
                 currentSession = currentService.getSession();
+                
+                currentService.initAccessToken();
             }
             else {
                 throw new IllegalStateException("Service name not set and there is no unambiguous OAuthService available");
