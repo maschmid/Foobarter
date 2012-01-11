@@ -33,6 +33,16 @@
     </navigation-rule>
     
     <navigation-rule>
+        <from-view-id>/wall.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{userDetail.setUser(m.user)}</from-action>
+            <if>#{true}</if>
+            <to-view-id>/user.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
         <from-view-id>/*</from-view-id>
         <navigation-case>
             <from-action>#{identity.logout}</from-action>

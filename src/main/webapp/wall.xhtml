@@ -24,13 +24,15 @@
 		
 		<h3>Latest FooBars</h3>
 		
-		<div class="messages">
-		<ui:repeat var="m" value="#{socialMessages.messages}">
-			<div class="message">
-				<div class="messageHeader"><img src="#{m.user.profileImageUrl}"/> <h:outputText value="#{m.user.fullName}"/> via <h:outputText value="#{m.user.serviceName}"/></div>
-				<div classs="messageBody"><h:outputText value="#{m.message}"/></div>			
+		<h:form>
+			<div class="messages">
+			<ui:repeat var="m" value="#{socialMessages.messages}">
+				<div class="message">
+					<div class="messageHeader"><img src="#{m.user.profileImageUrl}"/> <h:commandLink action="#{userDetail.setUser(m.user)}" value="#{m.user.fullName}"/> via <h:outputText value="#{m.user.serviceName}"/></div>
+					<div classs="messageBody"><h:outputText value="#{m.message}"/></div>
+				</div>
+			</ui:repeat>
 			</div>
-		</ui:repeat>
-		</div>
+		</h:form>
 	</ui:define>
 </ui:composition>
