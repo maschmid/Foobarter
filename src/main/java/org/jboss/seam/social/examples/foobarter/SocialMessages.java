@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
 import org.jboss.seam.security.Identity;
+import org.jboss.seam.security.annotations.LoggedIn;
 import org.jboss.seam.social.Current;
 import org.jboss.seam.social.HasStatus;
 import org.jboss.seam.social.MultiServicesManager;
@@ -15,6 +16,7 @@ import org.jboss.seam.social.examples.foobarter.model.IdentityObject;
 import org.jboss.seam.social.examples.foobarter.model.SocialMessage;
 
 @Model
+@LoggedIn
 public class SocialMessages {
     
     @Inject

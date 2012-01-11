@@ -11,6 +11,9 @@
 				<p>Please select the service Below to connect Seam Social to your
 			account on the given service</p>
 			
+				<p>Service name: <h:outputText value="#{oauthAuthenticator.serviceName}"/></p>
+				
+			
 					<h:commandButton value="Twitter" action="#{identity.login}">
 						<f:setPropertyActionListener target="#{oauthAuthenticator.serviceName}" value="Twitter" />
 					</h:commandButton>

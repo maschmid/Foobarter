@@ -18,7 +18,8 @@
 <beans xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
     <interceptors>
-        <class>org.jboss.seam.transaction.TransactionInterceptor</class>
+        <class>org.jboss.seam.security.SecurityInterceptor</class>
+        <class>org.jboss.seam.transaction.TransactionInterceptor</class>        
     </interceptors>
 
 </beans>
