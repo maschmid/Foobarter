@@ -21,5 +21,12 @@
 
     <!-- Write your navigation rules here. You are encouraged to use CDI for
          creating @Named managed beans. -->
-
+    <navigation-rule>
+        <from-view-id>/callback.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{oauthAuthenticator.connect()}</from-action>
+            <to-view-id>/wall.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>
 </faces-config>

@@ -9,14 +9,15 @@
             <f:viewParam name="#{oauthAuthenticator.verifierParamName}" value="#{oauthAuthenticator.verifier}"
                          required="true"
                          requiredMessage="We didn't get the authorization from the OAuth provider. Please go back and Try Again !"/>
-            <f:event type="preRenderView" listener="#{oauthAuthenticator.connect()}"/>
+<!--            <f:event type="preRenderView" listener="#{oauthAuthenticator.connect()}"/>-->
+            	<s:viewAction action="#{oauthAuthenticator.connect()}"/>  
         </f:metadata>
         <h:messages/>
         <h1>Seam Social FooBarter Example</h1>
 
         <p>Getting Authorization from TODO</p>
         You're ready to use FooBarter
-        <h:link outcome="home">client</h:link>
+        <h:link outcome="wall">client</h:link>
 
     </ui:define>
 </ui:composition>

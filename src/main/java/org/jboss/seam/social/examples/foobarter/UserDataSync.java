@@ -19,7 +19,7 @@ public class UserDataSync {
             OAuthUser oauthUser = (OAuthUser)identity.getUser();
             IdentityObject io = em.find(IdentityObject.class, oauthUser.getKey());
             io.setFullName(oauthUser.getUserProfile().getFullName());           
-            io.setProfileImageUrl(oauthUser.getUserProfile().getProfileImageUrl());           
+            io.setProfileImageUrl(oauthUser.getUserProfile().getProfileImageUrl());
         }
     }
 }

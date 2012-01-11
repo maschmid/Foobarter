@@ -8,7 +8,6 @@
 		<h1>Seam Social client Example</h1>
 
 		<h:form>
-			<h:panelGroup rendered="#{not identity.loggedIn}">
 				<p>Please select the service Below to connect Seam Social to your
 			account on the given service</p>
 			
@@ -32,34 +31,7 @@
 						<f:setPropertyActionListener target="#{oauthAuthenticator.serviceName}" value="LinkedIn" />
 					</h:commandButton>
 			
-			</h:panelGroup>
-		
-			<h:panelGroup rendered="#{identity.loggedIn}">
+		</h:form>	
 			
-				<div>
-					<img src="#{identity.user.userProfile.profileImageUrl}"/> Hello, <h:outputText value="#{identity.user.userProfile.fullName}!"/> you are now connected via your <h:outputText value="#{identity.user.serviceName}"/> account.
-					
-					<h:commandButton action="#{identity.logout}" value="logout"/>
-				</div>
-			
-				<div>Tell us (your followers, #{identity.user.serviceName} overlords and the whole world) what you think!
-				</div>
-				
-				<div>
-					<h:inputText value="#{socialMessages.message}"/>
-					<h:commandButton action="#{socialMessages.post}" value="Send"/>
-				</div>
-				
-			</h:panelGroup>		
-		
-		</h:form>		
-		
-		<ul>
-		<ui:repeat var="m" value="#{socialMessages.messages}">
-			<li>
-				<h:outputText value="#{m.message}"/>  <h:outputText value="#{m.user.fullName}"/> <img src="#{m.user.profileImageUrl}"/>
-			</li>
-		</ui:repeat>
-		</ul>
 	</ui:define>
 </ui:composition>
