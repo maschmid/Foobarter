@@ -60,6 +60,7 @@ public class OAuthAuthenticatorImpl extends BaseAuthenticator implements OAuthAu
 
     private static final long serialVersionUID = -5615811225606141834L;
 
+    @Inject
     private Instance<OAuthService> oauthService;
     
     private String serviceName = null;
