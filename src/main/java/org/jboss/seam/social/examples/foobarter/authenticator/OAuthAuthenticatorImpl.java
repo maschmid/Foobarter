@@ -111,17 +111,20 @@ public class OAuthAuthenticatorImpl extends BaseAuthenticator implements OAuthAu
     @Override
     public void authenticate() {
                
-        // If there is only one
-        if (serviceName == null && !oauthService.isUnsatisfied() && !oauthService.isAmbiguous()) {
-            
-            OAuthService unambiguousOAuthService = oauthService.get();
-            
-            try {
-                FacesContext.getCurrentInstance().getExternalContext().redirect(unambiguousOAuthService.getAuthorizationUrl());
-                setStatus(AuthenticationStatus.DEFERRED);
-            } catch (IOException e) {
-                log.error("Failed to redirect ", e);
-                setStatus(AuthenticationStatus.FAILURE);            
+        if (serviceName == null) {
+            if (!oauthService.isUnsatisfied() && !oauthService.isAmbiguous()) {
+                OAuthService unambiguousOAuthService = oauthService.get();
+                
+                try {
+                    FacesContext.getCurrentInstance().getExternalContext().redirect(unambiguousOAuthService.getAuthorizationUrl());
+                    setStatus(AuthenticationStatus.DEFERRED);
+                } catch (IOException e) {
+                    log.error("Failed to redirect ", e);
+                    setStatus(AuthenticationStatus.FAILURE);            
+                }
+            }
+            else {
+                throw new IllegalStateException("Service name not set and there is no unambiguous OAuthService available");
             }
         }
         else {           
