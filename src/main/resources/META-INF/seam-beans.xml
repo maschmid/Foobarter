@@ -25,6 +25,7 @@
         <security:authenticatorName>oauthAuthenticator</security:authenticatorName>
     </security:IdentityImpl>
 
+
     <o:TwitterServiceJackson>
         <s:modifies />
         <o:Twitter/>
