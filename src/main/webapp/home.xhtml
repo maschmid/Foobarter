@@ -23,6 +23,14 @@
 					<h:commandButton value="Twitter" action="#{identity.login}">
 						<f:setPropertyActionListener target="#{oauthAuthenticator.serviceName}" value="Twitter" />
 					</h:commandButton>
+					
+					<h:commandButton value="Facebook" action="#{identity.login}">
+						<f:setPropertyActionListener target="#{oauthAuthenticator.serviceName}" value="Facebook" />
+					</h:commandButton>
+					
+					<h:commandButton value="LinkedIn" action="#{identity.login}">
+						<f:setPropertyActionListener target="#{oauthAuthenticator.serviceName}" value="LinkedIn" />
+					</h:commandButton>
 			
 			</h:panelGroup>
 		
