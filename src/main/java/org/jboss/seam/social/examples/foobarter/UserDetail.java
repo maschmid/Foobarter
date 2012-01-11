@@ -8,6 +8,7 @@ import javax.inject.Named;
 
 import org.jboss.seam.faces.context.RenderScoped;
 import org.jboss.seam.social.MultiServicesManager;
+import org.jboss.seam.social.Twitter;
 import org.jboss.seam.social.examples.foobarter.model.IdentityObject;
 import org.jboss.seam.social.twitter.TwitterService;
 import org.jboss.seam.social.twitter.model.Tweet;
@@ -32,6 +33,7 @@ public class UserDetail implements Serializable {
     }
     
     @Inject
+    @Twitter
     TwitterService twitterService;
     
     /*List<Tweet> getTweets() {
