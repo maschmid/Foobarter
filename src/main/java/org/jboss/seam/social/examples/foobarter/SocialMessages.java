@@ -2,6 +2,7 @@ package org.jboss.seam.social.examples.foobarter;
 
 import java.util.List;
 
+import javax.enterprise.inject.Instance;
 import javax.enterprise.inject.Model;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -9,6 +10,7 @@ import javax.persistence.EntityManager;
 import org.jboss.seam.security.Identity;
 import org.jboss.seam.social.Current;
 import org.jboss.seam.social.HasStatus;
+import org.jboss.seam.social.MultiServicesManager;
 import org.jboss.seam.social.examples.foobarter.model.IdentityObject;
 import org.jboss.seam.social.examples.foobarter.model.SocialMessage;
 
@@ -19,8 +21,7 @@ public class SocialMessages {
     EntityManager em;
     
     @Inject
-    @Current
-    HasStatus statusService;    
+    MultiServicesManager servicesManager;
     
     @Inject
     Identity identity;
@@ -40,6 +41,7 @@ public class SocialMessages {
     }   
     
     public void post() {
+        HasStatus statusService = (HasStatus)servicesManager.getCurrentService();
         statusService.updateStatus(message);
         
         SocialMessage sm = new SocialMessage();
