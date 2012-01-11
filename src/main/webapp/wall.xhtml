@@ -8,22 +8,21 @@
 		<h1>Seam Social client Example</h1>
 
 		<h:form>
-
 				<div>
 					<img src="#{identity.user.userProfile.profileImageUrl}"/> Hello, <h:outputText value="#{identity.user.userProfile.fullName}!"/> you are now connected via your <h:outputText value="#{identity.user.serviceName}"/> account.
 					
 					<h:commandButton action="#{identity.logout}" value="logout"/>
 				</div>
 			
-				<div>Tell us (your followers, #{identity.user.serviceName} overlords and the whole world) what you think!
-				</div>
+				<div>Tell us (and your followers, #{identity.user.serviceName} overlords and the whole world) what you think!</div>
 				
 				<div>
 					<h:inputText value="#{socialMessages.message}"/>
 					<h:commandButton action="#{socialMessages.post}" value="Send"/>
 				</div>
-
 		</h:form>		
+		
+		<h3>Latest FooBars</h3>
 		
 		<ul>
 		<ui:repeat var="m" value="#{socialMessages.messages}">

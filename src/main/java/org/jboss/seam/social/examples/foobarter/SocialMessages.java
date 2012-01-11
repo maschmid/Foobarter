@@ -40,7 +40,7 @@ public class SocialMessages {
     }
 
     public List<SocialMessage> getMessages() {
-        return em.createQuery("from SocialMessage m order by m.date desc").getResultList();
+        return em.createQuery("from SocialMessage m order by m.date desc limit 20").getResultList();
     }   
     
     public void post() {
