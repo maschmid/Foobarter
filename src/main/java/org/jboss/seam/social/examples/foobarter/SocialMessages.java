@@ -52,7 +52,6 @@ public class SocialMessages {
         sm.setMessage(message);
         sm.setUser(em.find( IdentityObject.class, identity.getUser().getId()));
         sm.setDate(new Date());
-        sm.setServiceName(((OAuthUser)identity.getUser()).getServiceName());
         
         em.persist(sm);
     }

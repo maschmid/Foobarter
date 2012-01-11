@@ -28,6 +28,7 @@ public class IdentityObject implements Serializable {
 
     private String fullName;
     private String profileImageUrl;
+    private String serviceName;
     
     public String getName() {
         return name;
@@ -62,6 +63,14 @@ public class IdentityObject implements Serializable {
 
     public void setType(IdentityObjectType type) {
         this.type = type;
+    }
+
+    public void setServiceName(String serviceName) {
+        this.serviceName = serviceName;
+    }
+
+    public String getServiceName() {
+        return serviceName;
     }
 
 }
