@@ -11,14 +11,6 @@
 				<p>Please select the service Below to connect Seam Social to your
 			account on the given service</p>
 			
-					<!-- <ul>
-						<h:selectOneRadio value="#{oauthAuthenticator.serviceName}">
-	                		<f:selectItems value="#{multiServicesManager.listOfServices}" var="p" itemValue="#{p}" itemLabel="#{p}"/>
-	            		</h:selectOneRadio>
-	            
-		            	<h:commandButton action="#{identity.login}" value="login"/>	            				
-					</ul>-->
-					
 					<h:commandButton value="Twitter" action="#{identity.login}">
 						<f:setPropertyActionListener target="#{oauthAuthenticator.serviceName}" value="Twitter" />
 					</h:commandButton>

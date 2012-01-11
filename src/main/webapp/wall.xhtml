@@ -8,34 +8,7 @@
 		<h1>Seam Social client Example</h1>
 
 		<h:form>
-			<h:panelGroup rendered="#{not identity.loggedIn}">
-				<p>Please select the service Below to connect Seam Social to your
-			account on the given service</p>
-			
-					<!-- <ul>
-						<h:selectOneRadio value="#{oauthAuthenticator.serviceName}">
-	                		<f:selectItems value="#{multiServicesManager.listOfServices}" var="p" itemValue="#{p}" itemLabel="#{p}"/>
-	            		</h:selectOneRadio>
-	            
-		            	<h:commandButton action="#{identity.login}" value="login"/>	            				
-					</ul>-->
-					
-					<h:commandButton value="Twitter" action="#{identity.login}">
-						<f:setPropertyActionListener target="#{oauthAuthenticator.serviceName}" value="Twitter" />
-					</h:commandButton>
-					
-					<h:commandButton value="Facebook" action="#{identity.login}">
-						<f:setPropertyActionListener target="#{oauthAuthenticator.serviceName}" value="Facebook" />
-					</h:commandButton>
-					
-					<h:commandButton value="LinkedIn" action="#{identity.login}">
-						<f:setPropertyActionListener target="#{oauthAuthenticator.serviceName}" value="LinkedIn" />
-					</h:commandButton>
-			
-			</h:panelGroup>
-		
-			<h:panelGroup rendered="#{identity.loggedIn}">
-			
+
 				<div>
 					<img src="#{identity.user.userProfile.profileImageUrl}"/> Hello, <h:outputText value="#{identity.user.userProfile.fullName}!"/> you are now connected via your <h:outputText value="#{identity.user.serviceName}"/> account.
 					
@@ -49,9 +22,7 @@
 					<h:inputText value="#{socialMessages.message}"/>
 					<h:commandButton action="#{socialMessages.post}" value="Send"/>
 				</div>
-				
-			</h:panelGroup>		
-		
+
 		</h:form>		
 		
 		<ul>
