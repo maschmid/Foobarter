@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/WEB-INF/templates/default.xhtml">
+	<ui:define name="content">
+		<h1>Seam Social client Example</h1>
+
+		<h:form>
+				<p>Please select the service Below to connect Seam Social to your
+			account on the given service</p>
+			
+				<p>Service name: <h:outputText value="#{oauthAuthenticator.serviceName}"/></p>
+				
+			
+					<h:commandButton value="Twitter" action="#{identity.login}">
+						<f:setPropertyActionListener target="#{oauthAuthenticator.serviceName}" value="Twitter" />
+					</h:commandButton>
+					
+					<h:commandButton value="Facebook" action="#{identity.login}">
+						<f:setPropertyActionListener target="#{oauthAuthenticator.serviceName}" value="Facebook" />
+					</h:commandButton>
+					
+					<h:commandButton value="LinkedIn" action="#{identity.login}">
+						<f:setPropertyActionListener target="#{oauthAuthenticator.serviceName}" value="LinkedIn" />
+					</h:commandButton>
+			
+		</h:form>	
+			
+	</ui:define>
+</ui:composition>
