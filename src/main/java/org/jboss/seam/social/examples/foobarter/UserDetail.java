@@ -1,10 +1,12 @@
 package org.jboss.seam.social.examples.foobarter;
 
-import javax.enterprise.inject.Model;
+import javax.faces.bean.ViewScoped;
+import javax.inject.Named;
 
 import org.jboss.seam.social.examples.foobarter.model.IdentityObject;
 
-@Model
+@Named
+@ViewScoped
 public class UserDetail {
     private IdentityObject user;
 
