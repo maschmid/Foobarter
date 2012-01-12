@@ -26,7 +26,7 @@
     </security:IdentityImpl>
 
 
-    <o:TwitterServiceJackson>
+    <o:TwitterServiceImpl>
         <s:modifies />
         <o:Twitter/>
         <s:ApplicationScoped />
@@ -35,10 +35,10 @@
             apiSecret="Ee3S1Iz7e3Vuyq8rJ9Kj26zN1g1qAtOGkr0iVlF48"
             callback="http://foobarter-social.rhcloud.com/callback.jsf" />
 
-    </o:TwitterServiceJackson>
+    </o:TwitterServiceImpl>
 
 <!-- 
-    <o:LinkedInServiceJackson>
+    <o:LinkedInServiceImpl>
         <s:modifies />
         <o:LinkedIn/>
         <s:ApplicationScoped />
@@ -46,15 +46,15 @@
             apiKey="S_nNhBAELJHwt-1Z4pOQg5xGujTilevRIBXcVYSWS5P9ezW4R9HbzfIo2IqYXFbK"
             apiSecret="R5UQPEAlfh-wDvnoHBR2SOi4zvQVzJ8oVpUKwcbchfR_HucnCWptYAX3Vr2kSkXd"
             callback="http://foobarter-social.rhcloud.com/callback.jsf" />
-    </o:LinkedInServiceJackson>
+    </o:LinkedInServiceImpl>
 
-    <o:FacebookServiceJackson>
+    <o:FacebookServiceImpl>
         <s:modifies />
         <o:Facebook/>
         <s:ApplicationScoped />
         <o:OAuthApplication apiKey="265967083466262"
             apiSecret="f00648e171e34e0282a1cb2a64bbf922"
             callback="http://foobarter-social.rhcloud.com/callback.jsf" />
-    </o:FacebookServiceJackson>
+    </o:FacebookServiceImpl>
 -->
 </beans>
