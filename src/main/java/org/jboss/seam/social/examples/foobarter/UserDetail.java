@@ -46,8 +46,8 @@ public class UserDetail implements Serializable {
     @Inject
     JsonMapper jsonMapper;
     
-    List<Tweet> getTweets() throws JsonParseException, JsonMappingException, IOException {        
-        ObjectMapper mapper = new ObjectMapper();
-        return mapper.readValue(twitterService.sendSignedRequest(RestVerb.GET, "http://api.twitter.com/1/statuses/user_timeline.json?user_id=" + user.getOauthId()).getBody(), new TypeReference<List<Tweet>>() {});
+    List<Tweet> getTweets() {        
+        //ObjectMapper mapper = new ObjectMapper();
+        return jsonMapper.requestObject(twitterService.sendSignedRequest(RestVerb.GET, "http://api.twitter.com/1/statuses/user_timeline.json?user_id=" + user.getOauthId()), List.class);
     }
 }
