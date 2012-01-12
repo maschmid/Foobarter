@@ -11,5 +11,11 @@
 			<img src="#{userDetail.user.profileImageUrl}"/>
 		</h:form>
 		
+		<ui:repeat value="#{userDetail.tweets}" var="t">
+			<div>
+				<h:outputText value="#{t.text}"/>
+			</div>	
+		</ui:repeat>
+		
 	</ui:define>
 </ui:composition>
