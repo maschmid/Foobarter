@@ -6,8 +6,8 @@ import javax.persistence.EntityManager;
 
 import org.jboss.seam.security.Identity;
 import org.jboss.seam.security.events.DeferredAuthenticationEvent;
-import org.jboss.seam.social.examples.foobarter.authenticator.OAuthUser;
 import org.jboss.seam.social.examples.foobarter.model.IdentityObject;
+import org.jboss.seam.social.oauth.OAuthUser;
 
 public class UserDataSync {
     

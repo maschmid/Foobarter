@@ -65,7 +65,15 @@
     <dependency>
         <groupId>org.jboss.seam.social</groupId>
         <artifactId>seam-social</artifactId>
+        <version>3.2.0-SNAPSHOT</version>
         <scope>runtime</scope>
+    </dependency>
+    
+    <dependency>
+        <groupId>org.jboss.seam.social</groupId>
+        <artifactId>seam-social-api</artifactId>
+        <version>3.2.0-SNAPSHOT</version>
+        <scope>compile</scope>
     </dependency>
     
     <dependency>
@@ -89,7 +97,7 @@
             <groupId>org.jboss.seam.social</groupId>
             <artifactId>seam-social-twitter</artifactId>
             <scope>compile</scope>
-            <version>3.1.0.Final</version>
+            <version>3.2.0-SNAPSHOT</version>
         </dependency>
         
         <dependency>

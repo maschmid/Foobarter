@@ -11,13 +11,12 @@ import javax.persistence.EntityManager;
 import org.jboss.seam.security.Identity;
 import org.jboss.seam.security.annotations.LoggedIn;
 import org.jboss.seam.social.Current;
-import org.jboss.seam.social.HasStatus;
 import org.jboss.seam.social.MultiServicesManager;
 import org.jboss.seam.social.Twitter;
-import org.jboss.seam.social.examples.foobarter.authenticator.OAuthUser;
 import org.jboss.seam.social.examples.foobarter.model.IdentityObject;
 import org.jboss.seam.social.examples.foobarter.model.SocialMessage;
-import org.jboss.seam.social.twitter.TwitterService;
+import org.jboss.seam.social.twitter.TwitterTimelineService;
+import org.jboss.seam.social.twitter.TwitterUserService;
 
 @Model
 @LoggedIn
@@ -28,7 +27,7 @@ public class SocialMessages {
 
     @Inject
     @Twitter
-    TwitterService twitterService;
+    TwitterTimelineService twitterService;
     
     @Inject
     Identity identity;

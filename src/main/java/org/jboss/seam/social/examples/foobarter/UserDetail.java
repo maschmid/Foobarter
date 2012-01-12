@@ -9,16 +9,11 @@ import javax.inject.Named;
 
 import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
-import org.codehaus.jackson.map.ObjectMapper;
-import org.codehaus.jackson.type.TypeReference;
 import org.jboss.seam.faces.context.RenderScoped;
-import org.jboss.seam.social.JsonMapper;
-import org.jboss.seam.social.MultiServicesManager;
 import org.jboss.seam.social.Twitter;
 import org.jboss.seam.social.examples.foobarter.model.IdentityObject;
-import org.jboss.seam.social.rest.RestVerb;
-import org.jboss.seam.social.twitter.TwitterService;
-import org.jboss.seam.social.twitter.model.Tweet;
+import org.jboss.seam.social.twitter.Tweet;
+import org.jboss.seam.social.twitter.TwitterTimelineService;
 
 @Named
 @RenderScoped
@@ -41,13 +36,9 @@ public class UserDetail implements Serializable {
     
     @Inject
     @Twitter
-    TwitterService twitterService;
+    TwitterTimelineService twitterTimelineService;
     
-    @Inject
-    JsonMapper jsonMapper;
-    
-    List<Tweet> getTweets() {        
-        //ObjectMapper mapper = new ObjectMapper();
-        return jsonMapper.requestObject(twitterService.sendSignedRequest(RestVerb.GET, "http://api.twitter.com/1/statuses/user_timeline.json?user_id=" + user.getOauthId()), List.class);
+    List<Tweet> getTweets() throws JsonParseException, JsonMappingException, IOException {                
+        return twitterTimelineService.getUserTimeline(Long.parseLong(user.getOauthId()));
     }
 }
