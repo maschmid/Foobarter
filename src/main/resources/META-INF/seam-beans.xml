@@ -38,7 +38,7 @@
     -->    
         <o:OAuthApplication apiKey="3PUYDZInz50NpKsrrqg1A"
             apiSecret="Ee3S1Iz7e3Vuyq8rJ9Kj26zN1g1qAtOGkr0iVlF48"
-            callback="http://foobarter.org/callback.jsf" />
+            callback="http://www.foobarter.org/callback.jsf" />
     </o:TwitterServiceImpl>
 
 <!-- 
