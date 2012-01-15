@@ -4,7 +4,15 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	template="/WEB-INF/templates/default.xhtml">
+	
 	<ui:define name="content">
+	
+		<f:metadata>
+            <f:viewParam name="user" value="#{userDetail.screenName}"
+                         required="true"
+                         requiredMessage="User needs to be specified"/>
+        </f:metadata>
+	
 		<h1><h:outputText value="#{userDetail.user.fullName}"/></h1>
 
 		<h:form>

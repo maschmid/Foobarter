@@ -8,6 +8,7 @@ import org.jboss.seam.security.Identity;
 import org.jboss.seam.security.events.DeferredAuthenticationEvent;
 import org.jboss.seam.social.examples.foobarter.model.IdentityObject;
 import org.jboss.seam.social.oauth.OAuthUser;
+import org.jboss.seam.social.twitter.TwitterProfile;
 
 public class UserDataSync {
     
@@ -23,6 +24,7 @@ public class UserDataSync {
             io.setFullName(oauthUser.getUserProfile().getFullName());           
             io.setProfileImageUrl(oauthUser.getUserProfile().getProfileImageUrl());
             io.setOauthId(oauthUser.getUserProfile().getId());
+            io.setScreenName(((TwitterProfile)oauthUser.getUserProfile()).getScreenName());
         }
     }
 }

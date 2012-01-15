@@ -46,4 +46,17 @@ span.invalid {
 
 .message img {
 	float:left;	
+	padding-right: 4px;
+}
+
+.message {
+	height:64px;
+}
+
+.message div {
+	padding: 4px;
+}
+
+.messageHeader {
+	font-size: x-small;
 }

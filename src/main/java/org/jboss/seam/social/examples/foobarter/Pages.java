@@ -13,5 +13,9 @@ public interface Pages {
         @LoginView("/home.xhtml")
         @LoggedIn
         WALL,
+        
+        @ViewPattern("/user.xhtml")
+        @Follower
+        USER
     }
 }

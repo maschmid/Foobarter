@@ -129,4 +129,8 @@
       </build>
     </profile>
   </profiles>
+
+  <build>
+    <finalName>foobarter</finalName>
+  </build>
 </project>

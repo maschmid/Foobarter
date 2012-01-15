@@ -30,6 +30,7 @@ public class IdentityObject implements Serializable {
     private String fullName;
     private String profileImageUrl;
     private String serviceName;
+    private String screenName;
     
     public String getName() {
         return name;
@@ -82,4 +83,11 @@ public class IdentityObject implements Serializable {
         return oauthId;
     }
 
+	public void setScreenName(String screenName) {
+		this.screenName = screenName;
+	}
+
+	public String getScreenName() {
+		return screenName;
+	}
 }

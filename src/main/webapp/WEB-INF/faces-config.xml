@@ -41,6 +41,16 @@
             <redirect/>
         </navigation-case>
     </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/home.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{identity.login}</from-action>
+            <if>#{identity.loggedIn}</if>
+            <to-view-id>/wall.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>
 
     <navigation-rule>
         <from-view-id>/*</from-view-id>

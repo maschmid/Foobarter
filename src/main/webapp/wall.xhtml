@@ -19,6 +19,7 @@
 				<div>
 					<h:inputText value="#{socialMessages.message}"/>
 					<h:commandButton action="#{socialMessages.post}" value="Send"/>
+					<h:selectBooleanCheckbox value="#{socialMessages.postToTwitter}" />
 				</div>
 		</h:form>		
 		
@@ -28,7 +29,18 @@
 			<div class="messages">
 			<ui:repeat var="m" value="#{socialMessages.messages}">
 				<div class="message">
-					<div class="messageHeader"><img src="#{m.user.profileImageUrl}"/> <h:commandLink action="#{userDetail.setUser(m.user)}" value="#{m.user.fullName}"/> via <h:outputText value="#{m.user.serviceName}"/></div>
+					<div class="messageHeader"><img src="#{m.user.profileImageUrl}"/>
+						<h:link value="#{m.user.fullName}" outcome="user">
+							<f:param name="user" value="#{m.user.screenName}" />
+						</h:link>
+						via <h:outputText value="#{m.user.serviceName}"/>
+						on
+						<h:outputText value="#{m.date}" >
+              				<f:convertDateTime type="date" dateStyle="long"/>
+           				</h:outputText> 
+						
+						<h:commandButton rendered="#{!friendBean.isFriend(m.user.oauthId)}" value="Follow" action="#{friendBean.follow(m.user.oauthId)}" />
+					</div>
 					<div classs="messageBody"><h:outputText value="#{m.message}"/></div>
 				</div>
 			</ui:repeat>

@@ -8,7 +8,11 @@
 		<h1>Seam Social client Example</h1>
 
 		<h:form>
-				<h:commandButton value="Twitter" action="#{identity.login}"/>
+			<h:commandButton value="Twitter" action="#{identity.login}" image="resources/gfx/sign-in-with-twitter_0.png">
+				<f:setPropertyActionListener
+    			target="#{oauthAuthenticator.serviceName}"
+    			value="Twitter"/>
+    		</h:commandButton>
 		</h:form>	
 			
 	</ui:define>

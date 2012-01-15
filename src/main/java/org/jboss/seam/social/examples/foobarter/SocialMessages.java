@@ -32,8 +32,9 @@ public class SocialMessages {
     @Inject
     Identity identity;
     
-    String message;
-    
+    private String message;
+    private boolean postToTwitter = false;
+   
     public String getMessage() {
         return message;
     }
@@ -47,7 +48,9 @@ public class SocialMessages {
     }   
     
     public void post() {
-        twitterService.updateStatus(message);
+    	if (postToTwitter) {
+    		twitterService.updateStatus(message);
+    	}
         
         SocialMessage sm = new SocialMessage();
         sm.setMessage(message);
@@ -56,4 +59,12 @@ public class SocialMessages {
         
         em.persist(sm);
     }
+
+	public void setPostToTwitter(boolean postToTwitter) {
+		this.postToTwitter = postToTwitter;
+	}
+
+	public boolean isPostToTwitter() {
+		return postToTwitter;
+	}
 }

@@ -21,27 +21,30 @@ public class PopulateDatabase {
     @Transactional
     public void loadData(@Observes @Initialized WebApplication webapp) {
         
-        // Object types
-        IdentityObjectType USER = new IdentityObjectType();
-        USER.setName("USER");
-        entityManager.persist(USER);
-        
-        IdentityObjectType GROUP = new IdentityObjectType();
-        GROUP.setName("GROUP");
-        entityManager.persist(GROUP);
-
-        // Credential types
-        IdentityObjectCredentialType PASSWORD = new IdentityObjectCredentialType();
-        PASSWORD.setName("PASSWORD");
-        entityManager.persist(PASSWORD);
-        
-        // Object relationship types
-        IdentityObjectRelationshipType jbossIdentityMembership = new IdentityObjectRelationshipType();
-        jbossIdentityMembership.setName("JBOSS_IDENTITY_MEMBERSHIP");
-        entityManager.persist(jbossIdentityMembership);
-        
-        IdentityObjectRelationshipType jbossIdentityRole = new IdentityObjectRelationshipType();
-        jbossIdentityRole.setName("JBOSS_IDENTITY_ROLE");
-        entityManager.persist(jbossIdentityRole);
+    	if (entityManager.createQuery("from IdentityObjectType t where t.name = 'USER'").getResultList().size() == 0) {    	
+    		// Object types
+    		IdentityObjectType USER = new IdentityObjectType();
+    		USER.setName("USER");
+    		entityManager.persist(USER);
+    	}
+    	
+    	if (entityManager.createQuery("from IdentityObjectType t where t.name = 'GROUP'").getResultList().size() == 0) {    	
+    		IdentityObjectType GROUP = new IdentityObjectType();
+    	    GROUP.setName("GROUP");
+    	    entityManager.persist(GROUP);
+    	}
+    	
+    	if (entityManager.createQuery("from IdentityObjectRelationshipType t where t.name = 'JBOSS_IDENTITY_MEMBERSHIP'").getResultList().size() == 0) {    	    	        
+    		// Object relationship types
+    		IdentityObjectRelationshipType jbossIdentityMembership = new IdentityObjectRelationshipType();
+    		jbossIdentityMembership.setName("JBOSS_IDENTITY_MEMBERSHIP");
+    		entityManager.persist(jbossIdentityMembership);
+    	}
+    	
+    	if (entityManager.createQuery("from IdentityObjectRelationshipType t where t.name = 'JBOSS_IDENTITY_ROLE'").getResultList().size() == 0) {        
+    		IdentityObjectRelationshipType jbossIdentityRole = new IdentityObjectRelationshipType();
+    		jbossIdentityRole.setName("JBOSS_IDENTITY_ROLE");
+    		entityManager.persist(jbossIdentityRole);
+    	}
     }
 }
