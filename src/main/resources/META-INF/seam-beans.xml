@@ -30,11 +30,15 @@
         <s:modifies />
         <o:Twitter/>
         <s:ApplicationScoped />
-
+    
+<!--    
         <o:OAuthApplication apiKey="3PUYDZInz50NpKsrrqg1A"
             apiSecret="Ee3S1Iz7e3Vuyq8rJ9Kj26zN1g1qAtOGkr0iVlF48"
-            callback="http://foobarter-social.rhcloud.com/callback.jsf" />
-
+            callback="http://localhost:8080/foobarter/callback.jsf" />
+    -->    
+        <o:OAuthApplication apiKey="3PUYDZInz50NpKsrrqg1A"
+            apiSecret="Ee3S1Iz7e3Vuyq8rJ9Kj26zN1g1qAtOGkr0iVlF48"
+            callback="http://foobarter.org/callback.jsf" />
     </o:TwitterServiceImpl>
 
 <!-- 
