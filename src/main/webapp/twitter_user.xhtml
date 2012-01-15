@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/WEB-INF/templates/default.xhtml">
+	
+	<ui:define name="content">
+	
+		<f:metadata>
+            <f:viewParam name="user" value="#{twitterUserDetail.screenName}"
+                         required="true"
+                         requiredMessage="User needs to be specified"/>
+        </f:metadata>
+	
+		<h1><h:outputText value="#{twitterUserDetail.user.fullName}"/></h1>
+
+		<div>
+			<a href="http://twitter.com/#{twitterUserDetail.user.screenName}"><img src="#{twitterUserDetail.user.profileImageUrl}"/> <h:outputText value="#{twitterUserDetail.user.screenName}"/></a>
+		</div>
+
+		<h3>Timeline</h3>
+			
+		<ui:repeat value="#{twitterUserDetail.tweets}" var="t">
+			
+			<div class="message">
+				<div class="messageHeader"><img src="#{t.profileImageUrl}"/>
+					on
+				<h:outputText value="#{t.createdAt}" >
+              		<f:convertDateTime type="both" dateStyle="long"/>
+           		</h:outputText> 
+					
+				</div>
+				<div classs="messageBody"><h:outputText value="#{t.text}"/></div>
+			</div>	
+		</ui:repeat>
+		
+	</ui:define>
+</ui:composition>

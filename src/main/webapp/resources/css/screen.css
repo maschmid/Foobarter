@@ -44,7 +44,7 @@ span.invalid {
     color: red;
 }
 
-.message img {
+.messageHeader img {
 	float:left;	
 	padding-right: 4px;
 }
@@ -59,4 +59,13 @@ span.invalid {
 
 .messageHeader {
 	font-size: x-small;
+}
+
+.header {
+	height:100px;
+}
+
+.header img {
+	float:left;
+	padding-right: 4px;
 }

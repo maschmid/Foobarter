@@ -1,7 +1,6 @@
 package org.jboss.seam.social.examples.foobarter;
 
 import java.io.IOException;
-import java.io.Serializable;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
@@ -12,7 +11,6 @@ import javax.persistence.EntityManager;
 import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.node.ObjectNode;
-import org.jboss.seam.faces.context.RenderScoped;
 import org.jboss.seam.security.Identity;
 import org.jboss.seam.security.annotations.Secures;
 import org.jboss.seam.social.JsonMapper;
@@ -29,14 +27,11 @@ import org.jboss.seam.social.twitter.TwitterUserService;
 
 @Named
 @RequestScoped
-public class UserDetail {
+public class TwitterUserDetail {
 	
 	@Inject
 	EntityManager em;
 
-    /**
-     * 
-     */
     private static final long serialVersionUID = -7329350178729100114L;
     
     private String screenName;
@@ -82,7 +77,13 @@ public class UserDetail {
     
     @Secures @Follower
     public boolean isFollower(Identity identity) {
+    	    
     	OAuthUser currentUser = (OAuthUser)identity.getUser();
+    	
+    	// check if we are logged in
+    	if (currentUser == null) {
+    		return false;
+    	}
     	
     	// Allow user to view own's posts
     	if (currentUser.getOauthId().equals(getUser().getOauthId())) {

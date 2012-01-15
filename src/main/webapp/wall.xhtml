@@ -5,21 +5,26 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	template="/WEB-INF/templates/default.xhtml">
 	<ui:define name="content">
-		<h1>Seam Social client Example</h1>
 
-		<h:form>
+		<div class="header">					
+				<img src="#{identity.user.userProfile.profileImageUrl}"/>
+				<h3><h:outputText value="#{identity.user.userProfile.fullName}"/></h3>	
+				via <h:outputText value="#{identity.user.serviceName} "/> <h:commandButton action="#{identity.logout}" value="logout"/>			
+		</div>
+
+		<h:form>			
 				<div>
-					<img src="#{identity.user.userProfile.profileImageUrl}"/> Hello, <h:outputText value="#{identity.user.userProfile.fullName}!"/> you are now connected via your <h:outputText value="#{identity.user.serviceName}"/> account.
+					<div>
+						<h:inputText size="40" value="#{socialMessages.message}"/>
+						<h:commandButton action="#{socialMessages.post}" value="FooBar"/>
+					</div>
 					
-					<h:commandButton action="#{identity.logout}" value="logout"/>
-				</div>
-			
-				<div>Tell us (and your followers, #{identity.user.serviceName} overlords and the whole world) what you think!</div>
-				
-				<div>
-					<h:inputText value="#{socialMessages.message}"/>
-					<h:commandButton action="#{socialMessages.post}" value="Send"/>
-					<h:selectBooleanCheckbox value="#{socialMessages.postToTwitter}" />
+					<div>
+						<h:selectBooleanCheckbox id="postToTwitter" value="#{socialMessages.postToTwitter}" />
+						<h:outputLabel for="postToTwitter" value="Also post to twitter"/>
+					</div>
+					
+					
 				</div>
 		</h:form>		
 		
@@ -30,16 +35,16 @@
 			<ui:repeat var="m" value="#{socialMessages.messages}">
 				<div class="message">
 					<div class="messageHeader"><img src="#{m.user.profileImageUrl}"/>
-						<h:link value="#{m.user.fullName}" outcome="user">
+						<h:link value="#{m.user.fullName}" outcome="twitter_user" rendered="#{m.user.serviceName=='Twitter'}">
 							<f:param name="user" value="#{m.user.screenName}" />
 						</h:link>
 						via <h:outputText value="#{m.user.serviceName}"/>
 						on
 						<h:outputText value="#{m.date}" >
-              				<f:convertDateTime type="date" dateStyle="long"/>
+              				<f:convertDateTime type="both" dateStyle="long"/>
            				</h:outputText> 
 						
-						<h:commandButton rendered="#{!friendBean.isFriend(m.user.oauthId)}" value="Follow" action="#{friendBean.follow(m.user.oauthId)}" />
+						<h:commandLink rendered="#{!friendBean.isFriend(m.user.oauthId)}" value=" Follow this user!" action="#{friendBean.follow(m.user.oauthId)}" />
 					</div>
 					<div classs="messageBody"><h:outputText value="#{m.message}"/></div>
 				</div>
