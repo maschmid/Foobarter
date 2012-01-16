@@ -1,5 +1,5 @@
 Repo layout
-=========== 
+===========  
 deployments/ - location for built wars (Details below)
 src/ - Maven src structure
 pom.xml - Maven build file  
